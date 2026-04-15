@@ -83,11 +83,12 @@ from PIL import Image
 from mobileclip.modules.common.mobileone import reparameterize_model
 
 model_name = "MobileCLIP2-S0"
+model_path = "/path/to/mobileclip2_s0.pt"
 model_kwargs = {}
-if not (model_name.endswith("S3") or model_name.endswith("S4") or model_name.endswith("L-14")):
+if not (model_name == "MobileCLIP2-S3" or model_name == "MobileCLIP2-S4" or model_name.endswith("L-14")):
     model_kwargs = {"image_mean": (0, 0, 0), "image_std": (1, 1, 1)}
 
-model, _, preprocess = open_clip.create_model_and_transforms(model_name, pretrained="/path/to/mobileclip2_s0.pt", **model_kwargs)
+model, _, preprocess = open_clip.create_model_and_transforms(model_name, pretrained=model_path, **model_kwargs)
 tokenizer = open_clip.get_tokenizer(model_name)
 
 # Model needs to be in eval mode for inference because of batchnorm layers unlike ViTs

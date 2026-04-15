@@ -15,7 +15,7 @@
         "width": 768,
         "heads": 12,
         "layers": 12,
-        "no_causal_mask": true
+        "no_causal_mask": false
     },
     "custom_text": true
 }
